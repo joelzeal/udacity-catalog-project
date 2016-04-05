@@ -1,0 +1,33 @@
+{% extends "main.html" %}
+{% block content %}
+<div class="row">
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel" >
+      <div class="x_title">
+        <h2>Recently Added Items</h2>
+
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+
+       {% for i in items %}
+       <a href="{{url_for('showCategoryItemDetails', category_id=i.category_id, item_id=i.id)}}">
+        <div>
+          <h3> {{i.name}} <small>({{i.category.name}})</small> </h3>
+        </div>  
+      </a>
+      {% endfor %}
+
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}
+
+{% block actionButtons %}
+	<p></p>
+	<a href='{{url_for('newCategory') }}'>
+		<button class="btn btn-primary btn-xs">Add New Catagory</button>
+	</a> 
+{% endblock %}

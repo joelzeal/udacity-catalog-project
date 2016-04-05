@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+{% block content %}
+<div class="row" style="min-height:800px">
+
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="x_panel" >
+			<div class="x_title">
+				<h1>New Category</h1>
+				<div class="clearfix"></div>
+			</div>
+			<div class="x_content">
+				<form action="#" method = "post" class="form-horizontal form-label-left">
+					<div class="form-group">
+						<label for="name" class="control-label col-md-3 col-sm-3 col-xs-12">Name:</label>
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<input type ="text" required="required" class="form-control " maxlength="100" name="name">
+						</div>
+						<div class="padding-bottom"></div>
+						<button type="submit" class="btn btn-success" id="submit" type="submit">
+							<span class="glyphicon glyphicons-list-alt" aria-hidden="true"></span>Create</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endblock %}
+	{% block actionButtons %}
+	<p></p>
+	{% endblock %}

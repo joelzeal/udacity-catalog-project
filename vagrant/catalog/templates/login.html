@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+  <!--LOAD PRE-REQUISITES FOR GOOGLE SIGN IN -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+
+  </script>
+
+  <script src="//apis.google.com/js/platform.js?onload=start"> </script>
+  <!-- END PRE-REQUISITES FOR GOOGLE SIGN IN --> 
+</head>
+
+<body>
+
+  <div class="main-wrap">
+    <div class="login-main">
+      <h1>Login</h1>
+      <br />
+      <input type="text" placeholder="user name" class="box1 border1">
+      <input type="password" placeholder="password" class="box1 border2">
+      <input type="submit" class="send" value="Go">
+
+
+      <br />
+      <br />
+
+      <!-- GOOGLE PLUS SIGN IN BUTTON-->
+      <center> <p> Login with Google<br /><br /></p>
+        <div id="signInButton">
+          <span class="g-signin"
+          data-scope="openid email"
+          data-clientid="968988849760-l5mnked4fu7th92vtrmjhk38krd7ofue.apps.googleusercontent.com"
+          data-redirecturi="postmessage"
+          data-accesstype="offline"
+          data-cookiepolicy="single_host_origin"
+          data-callback="signInCallback"
+          data-approvalprompt="force">
+        </span>
+      </div></center>
+      <!--END GOOGLE PLUS SIGN IN BUTTON -->
+    </div>
+    <center>
+      <div id="result"></div>
+    </center>
+  </div>
+
+
+
+  <script type="text/javascript">
+  function signInCallback(authResult){
+    if (authResult['code']) {
+      // Hide sign button now that user is logged in
+      $('#signInButton').attr('style', 'display:none');
+
+      //send one-time authcode to the server. If server responds, write login successful.
+      $.ajax({
+        type: 'POST',
+        url: '/gconnect?state={{STATE}}',
+        processData:false,
+        data: authResult['code'],
+        contentType: 'application/octect-stream; charset=utf-8',
+        success: function(result){
+          // Handle or verify the server response
+          $('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...')
+          setTimeout(function(){
+            window.location.href = "/";
+          }, 1000);
+        }
+      });
+    }
+    else if(authResult['error']){
+      console.log('There was an error: ' + authResult['error']);
+    }
+    else {
+      $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+    }
+  }
+
+  </script>
+
+
+</body>
+</html>

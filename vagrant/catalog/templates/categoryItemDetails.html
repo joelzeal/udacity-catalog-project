@@ -1,0 +1,27 @@
+{% extends "main.html" %}
+{% block content %}
+	<div class="row" style="min-height:800px">
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel" >
+                <div class="x_title">
+                  <h1>{{categoryItem.name}} <small>({{category.name}})</small></h1>
+                  
+                  <div class="clearfix"></div>
+                </div>
+                  <div class="x_content">
+			<p>{{categoryItem.description}}</p>
+			
+		</div>
+		</div>
+		</div>
+		</div>
+{% endblock %}
+
+{% block actionButtons %}
+<p></p>
+	<a href='{{url_for('editCategoryItem', category_id = category.id, item_id=categoryItem.id ) }}'>
+		<button class="btn btn-primary btn-xs">Edit Item</button>
+	</a> | 
+		<a href='{{url_for('deleteCategoryItem', category_id = category.id, item_id=categoryItem.id ) }}'><button class="btn btn-danger btn-xs">Delete Item</button></a>
+{% endblock %}

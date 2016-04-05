@@ -1,0 +1,15 @@
+<!--TODO: data binding-->
+<ul class="nav side-menu">
+                <li><a><i class="fa fa-home"></i> Categories <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu " style="display: none">
+                      <!--Bind categories here-->
+                      {% for category in categories %}
+                      	 <li><a href="{{url_for('showItems', category_id=category.id)}}">{{category.name}}</a></li>
+                      {% endfor %}
+                  </ul>
+                </li>
+               
+              </ul>
+
+
+
