@@ -32,25 +32,30 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
+# def login_required(fn):
+#     @wraps(fn)
+#     def wrap(*args, **kwargs):
+#         try:
+#             if login_session:
+#                 print 'login_exits'
+#                 if 'username' not in login_session:
+#                     return redirect(url_for('showlogin'))
+#                 else:
+#                     return fn(*arg, **kwargs)
+#             else:
+#                 return redirect(url_for('showlogin'))
+#         except KeyError, e:
+#             print e
+#             return redirect(url_for('showlogin'))
+#     return wrap
 
-def login_required(fn):
-    @wraps(fn)
-    def wrap(*args, **kwargs):
-        try:
-            if login_session:
-                print 'login_exits'
-                if 'username' not in login_session:
-                    return redirect(url_for('showlogin'))
-                else:
-                    return fn(*arg, **kwargs)
-            else:
-                return redirect(url_for('showlogin'))
-        except KeyError, e:
-            print e
-            return redirect(url_for('showlogin'))
-    return wrap
 
 def isobjectowner(user_id):
+    """
+    Checks if user is owner of an object.
+    :param user_id: user_id to check owner against
+    :return: returns true if user is owner and false if not.
+    """
     if getUserID(login_session['email']) ==  user_id:
         return True
     else:
@@ -247,7 +252,7 @@ def getUserID(email):
 
 
 # Categories
-@login_required
+# @login_required
 @app.route('/')
 def showDashboard():
     """
