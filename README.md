@@ -1,6 +1,6 @@
 Udacity Full-Stack Nanodegree
-Project 3 : Item Catalog
 =============================
+Project 3 : Item Catalog
 
 by Joel Agbemehin
 
@@ -8,7 +8,7 @@ Overview
 
 Project 3 implements a web application that provides a list of items within a variety of categories and integrates third-party user registration and authentication.
 
-How to Run
+# How to Run
 
 Please ensure you have Python, Vagrant and VirtualBox installed. This project uses a pre-congfigured Vagrant virtual machine which has the Flask server installed.
 
