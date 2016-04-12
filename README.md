@@ -13,8 +13,11 @@ Project 3 implements a web application that provides a list of items within a va
 Please ensure you have Python, Vagrant and VirtualBox installed. This project uses a pre-congfigured Vagrant virtual machine which has the Flask server installed.
 
 $ cd vagrant
+
 $ vagrant up
+
 $ vagrant ssh
+
 Within the virtual machine change in to the shared directory by running
 
 $ cd /vagrant/catalog
