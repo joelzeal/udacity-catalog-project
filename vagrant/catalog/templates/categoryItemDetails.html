@@ -20,8 +20,12 @@
 
 {% block actionButtons %}
 <p></p>
+ {% if isobjectowner(categoryItem.user_id) %}
+
 	<a href='{{url_for('editCategoryItem', category_id = category.id, item_id=categoryItem.id ) }}'>
 		<button class="btn btn-primary btn-xs">Edit Item</button>
-	</a> | 
+	</a> 
 		<a href='{{url_for('deleteCategoryItem', category_id = category.id, item_id=categoryItem.id ) }}'><button class="btn btn-danger btn-xs">Delete Item</button></a>
+
+{% endif %}
 {% endblock %}

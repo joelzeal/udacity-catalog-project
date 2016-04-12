@@ -12,21 +12,28 @@
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content">
-				<p>Are you sure you want to delete {{item.name}}? </p>
-				<form action="#" method = 'post'>
+				 {% if isobjectowner(item.user_id) %}
+					<p>Are you sure you want to delete {{item.name}}? </p>
+					<form action="#" method = 'post'>
+						<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+						<button type="submit" class="btn btn-danger delete" id="submit" type="submit">
+							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button>
+							<a href = '{{url_for('showItems', category_id=item.category_id)}}'>
+								<button class="btn btn-default" type="cancel">
+									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+								</a>
 
-					<button type="submit" class="btn btn-danger delete" id="submit" type="submit">
-						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button>
-						<a href = '{{url_for('showItems', category_id=item.category_id)}}'>
-							<button class="btn btn-default" type="cancel">
-								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
-							</a>
-
-						</form>
-					</div>
-				</div>
+							</form>
+						</div>
+				{% else %}
+				<p>
+					You are not authorized to delete this item.
+				</p>
+				{% endif %}
 			</div>
-		</div>
+			</div>
+</div>
+
 
 {% endblock %}
 {% block actionButtons %}

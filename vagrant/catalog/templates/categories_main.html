@@ -17,10 +17,18 @@
                                 </a>
                                     <div class="clearfix"></div>
 </div>
+							
                             <div class="x_content">
-                                <a href='{{url_for('editCategory', category_id = category.id) }}'>Edit</a> |
-                                <a href='{{url_for('deleteCategory', category_id = category.id ) }}'>Delete</a>
+                            	{% if isobjectowner(category.user_id) %}
+	                                <a href='{{url_for('editCategory', category_id = category.id) }}'>Edit</a> |
+	                                <a href='{{url_for('deleteCategory', category_id = category.id ) }}'>Delete</a>
+                                {% else %}
+                                <p><small>You cannot make changes to this category</small></p>
                             </div>
+                            
+
+
+                            {% endif %}
                         </div>
                     </div>
 

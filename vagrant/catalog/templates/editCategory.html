@@ -11,6 +11,7 @@
       </div>
       <div class="x_content">
        <form action="{{ url_for('editCategory',category_id = category.id)}}" method = "post" class="form-horizontal form-label-left">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">First Name <span class="required">*</span>
           </label>

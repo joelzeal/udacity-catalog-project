@@ -11,7 +11,9 @@
 			<div class="x_content">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-1 padding-top">
+						{% if isobjectowner(item.user_id) %}
 						<form action="#" method = "post" class="form-horizontal form-label-left">
+							<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
 							<div class="form-group">
 								<label for="name" class="control-label col-md-3 col-sm-3 col-xs-12">Name:</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
@@ -34,7 +36,12 @@
 									</a>
 								</div>
 							</form>
-						</div>
+						{% else %}
+						<p> 
+							You are not authorized to edit this item.
+						 </p>
+						 {% endif %}
+					</div>
 					</div>
 				</div>
 			</div>
